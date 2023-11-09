@@ -20,11 +20,30 @@ def get_ip_info(api_key):
         # Build a location string from city, region, and country name
         country_code = data.get('country_code')  # Extract the country code from the response
 
-        print(f"IPv4 Address: {ipv4}")  # Print the IPv4 address
-        print(f"IPv6 Address: {ipv6}")  # Print the IPv6 address
-        print(f"Location: {location}")  # Print the location
-        print(f"Country Code: {country_code}")  # Print the country code
+        prompt1=input('Do you want to see IPv4(a) or IPv6(b) or both(c)?').lower()
+        if prompt1 == 'a':
+            print(f"IPv4 Address: {ipv4}")  # Print the IPv4 address
+        elif prompt1 == 'b':
+            print(f"IPv6 Address: {ipv6}")
+        elif prompt1 == 'c':
+            print(f"IPv4 Address: {ipv4}")  # Print the IPv4 address
+            print(f"IPv6 Address: {ipv6}")  # Print the IPv6 address
+        else:
+            print('Input not recognized. Please enter only a, b, or c depending on your choice.') #an answer that wouldn't be yes or noF
 
+        prompt2=input('Do you also want to see the Location(a) or Country Code(b) or both(c) or skip(d)?')
+        if prompt2 == 'a':
+            print(f"Location: {location}")  # Print the location
+        elif prompt2 == 'b':
+            print(f"Country Code: {country_code}")  # Print the country code
+        elif prompt2 == 'c':
+            print(f"Location: {location}")  # Print the location
+            print(f"Country Code: {country_code}")  # Print the country code
+        elif prompt2 == 'd':
+            exit()
+        else:
+            print('Input not recognized. Please enter only a, b, c or d depending on your choice.') #an answer that wouldn't be yes or noF
+    
     except requests.exceptions.RequestException as req_err:
         # Handle HTTP-related errors
         print(f"HTTP error occurred: {req_err}")
